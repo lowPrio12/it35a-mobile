@@ -1,9 +1,13 @@
 import { IonButton, IonContent, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPage, IonRoute, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar,  } from "@ionic/react"
-import { logOutOutline } from "ionicons/icons"
+import { homeOutline, logOutOutline } from "ionicons/icons"
 import { Redirect, Route } from "react-router"
 import Home from "./Home"
 
 const Menu: React.FC = () => {
+    const path = [
+        {name: 'Home', url:'/app/home', icon:homeOutline}
+
+    ];
     return (
         <IonPage>
             <IonSplitPane contentId="main">
@@ -15,12 +19,13 @@ const Menu: React.FC = () => {
                 </IonHeader>
 
                 <IonContent>
-                    {Path2D.map((item, index) => (
+
+                    {path.map((item, index) => (
                         <IonMenuToggle key={index}>
                             <IonItem routerLink={item.url} routerDirection="forward">
                                 <IonIcon icon={item.icon}
                                     slot="start"></IonIcon>
-                                    {item.title}
+                                    {item.name}
                             </IonItem>
                         </IonMenuToggle>
                     ))}
