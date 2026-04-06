@@ -1,6 +1,6 @@
-import { IonButton, IonAlert } from '@ionic/react';
+import { IonButton, IonAlert, IonContent, IonPage } from '@ionic/react';
 import { useState } from 'react';
-
+import './Home.css';
 
 interface ContainerProps { }
 
@@ -25,19 +25,23 @@ const Home: React.FC<ContainerProps> = () => {
   ];
 
   return (
-    <div id="container">
-      <IonButton id="present-alert" onClick={() => setShowAlert(true)}>
-        Click Me Please
-      </IonButton>
-      <IonAlert
-        isOpen={showAlert}
-        onDidDismiss={() => setShowAlert(false)}
-        header="Thank You for Clicking Me"
-        subHeader=""
-        message="You can click me again!"
-        buttons={alertButtons}
-      />
-    </div>
+    <IonPage>
+      <IonContent className="ion-padding">
+        <div id="container">
+          <IonButton id="present-alert" onClick={() => setShowAlert(true)}>
+            Click Me Please
+          </IonButton>
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header="Thank You for Clicking Me"
+            subHeader=""
+            message="You can click me again!"
+            buttons={alertButtons}
+          />
+        </div>
+      </IonContent>
+    </IonPage>
   );
 };
 
