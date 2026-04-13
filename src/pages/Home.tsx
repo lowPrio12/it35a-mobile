@@ -1,48 +1,42 @@
-import { IonButton, IonAlert, IonContent, IonPage } from '@ionic/react';
-import { useState } from 'react';
-import './Home.css';
+import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { bookOutline, key, search, star } from "ionicons/icons";
+import { Redirect, Route } from "react-router";
+import Favorites from "./home-tabs/Favorites";
+import Feed from "./home-tabs/Feed";
+import Search from "./home-tabs/Search";
 
-interface ContainerProps { }
-
-const Home: React.FC<ContainerProps> = () => {
-  const [showAlert, setShowAlert] = useState(false);
-
-  const alertButtons = [
-    {
-      text: 'Cancel',
-      role: 'cancel',
-      handler: () => {
-        setShowAlert(false);
-      },
-    },
-    {
-      text: 'OK',
-      role: 'confirm',
-      handler: () => {
-        setShowAlert(false);
-      },
-    },
+const Home: React.FC = () => {
+  const Tabs = [
+    {name: "Feed", tab:'feed',url:'app/home/feed', icon:bookOutline},
+    {name: "Search", tab:'search',url:'app/home/search', icon:search},
+    {name: "Favorites", tab:'favorites',url:'app/home/favorites', icon:star},
   ];
-
   return (
-    <IonPage>
-      <IonContent className="ion-padding">
-        <div id="container">
-          <IonButton id="present-alert" onClick={() => setShowAlert(true)}>
-            Click Me Please
-          </IonButton>
-          <IonAlert
-            isOpen={showAlert}
-            onDidDismiss={() => setShowAlert(false)}
-            header="Thank You for Clicking Me"
-            subHeader=""
-            message="You can click me again!"
-            buttons={alertButtons}
-          />
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-};
+    <IonReactRouter>
+      <IonTabs>
+      <IonRouterOutlet>
+        <Route exact path="/app/home/feed" component={Feed} />
+        <Route exact path="/app/home">
+          <Redirect to="/app/home/feed"/>
+        </Route>
+        <Route exact path="/app/home/search" component={Search} />
+        <Route exact path="/app/home/favorites" component={Favorites} />
+      </IonRouterOutlet>
+      <IonTabBar slot = "bottom">
+        <IonToolbar>
+            <IonTitle>Tabs</IonTitle>
+         </IonToolbar>
+        {Tabs.map((item, index) => (
+          <IonTabButton key={index} tab={item.tab} href={item.url}>
+            <IonIcon icon={item.icon}/>
+            <IonLabel>{item.name}</IonLabel>
+          </IonTabButton>
+        ))}
+        </IonTabBar>
+      </IonTabs>
+        </IonReactRouter>
+    );
+  };
 
-export default Home;
+  export default Home;
