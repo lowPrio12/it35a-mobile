@@ -15,9 +15,12 @@ import {
 import { homeOutline, logOutOutline } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";  // Import Redirect and route from react-router-dom, that's what the ai said that was the problem because the IonRoute does not exist. I really dont get why.
 import Home from "./Home";
+import About from "./About";
+import template from "./Template";
 const Menu: React.FC = () => {
   const path = [
     { name: "Home", url: "/app/home", icon: homeOutline },
+    { name: "About", url: "/app/about", icon: homeOutline }
   ];
 
   return (
@@ -46,9 +49,11 @@ const Menu: React.FC = () => {
         </IonMenu>
         <IonRouterOutlet id="main">
           <Route exact path="/app/home" component={Home} />
+          <Route exact path="/app/about" component={About} />
           <Route exact path="/app">
             <Redirect to="/app/home" />
           </Route>
+          
         </IonRouterOutlet>
       </IonSplitPane>
     </IonPage>
