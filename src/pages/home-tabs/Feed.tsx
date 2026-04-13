@@ -7,8 +7,9 @@ const Feed: React.FC = () => {
             <IonToolbar>
                 <IonButtons>
                     <IonMenuButton></IonMenuButton>
+                    <IonTitle>Feed</IonTitle>
                 </IonButtons>
-                <IonTitle>Feed</IonTitle>
+                
             </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>

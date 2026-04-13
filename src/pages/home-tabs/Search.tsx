@@ -7,8 +7,9 @@ const Search: React.FC = () => {
             <IonToolbar>
                 <IonButtons>
                     <IonMenuButton></IonMenuButton>
+                    <IonTitle>Search</IonTitle>
                 </IonButtons>
-                <IonTitle>Search</IonTitle>
+                
             </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>

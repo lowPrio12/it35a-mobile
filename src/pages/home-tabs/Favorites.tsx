@@ -7,8 +7,9 @@ const Favorites: React.FC = () => {
             <IonToolbar>
                 <IonButtons>
                     <IonMenuButton></IonMenuButton>
+                    <IonTitle>Favorites</IonTitle>
                 </IonButtons>
-                <IonTitle>Favorites</IonTitle>
+                
             </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
